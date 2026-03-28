@@ -128,10 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     globalCanvas.id = 'mob-global-canvas';
     globalCanvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none';
     document.body.insertBefore(globalCanvas, document.body.firstChild);
-    // Make sure body content is above
-    document.querySelectorAll('.navbar,.hero,.section,.skills-section,.project-cards-section,.category-hero,.footer,.back-section,.mobile-menu').forEach(el => {
-      if (el) el.style.position = el.style.position || 'relative';
-    });
 
     const gCtx = globalCanvas.getContext('2d');
     let gW, gH;
@@ -486,16 +482,23 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.badge').forEach(b => badgeObs.observe(b));
 
     /* ============ INTERSECTION OBSERVER — FADE IN ============ */
+    // IMPORTANT: Do NOT add mob-fade to hero elements — they have their own CSS animations
     const fadeSelectors = '.reveal, .reveal-left, .about-content, .about-content p, .skill-category, .timeline-item, .project-category-card, .project-card, .section-title, .section-subtitle, .badge, .category-hero h1, .category-hero .category-desc, .category-hero .category-count, .back-link';
-    document.querySelectorAll(fadeSelectors).forEach(el => el.classList.add('mob-fade'));
+    document.querySelectorAll(fadeSelectors).forEach(el => {
+      // Skip anything inside .hero — hero has its own CSS animations
+      if (el.closest('.hero')) return;
+      el.classList.add('mob-fade');
+    });
 
     ['.projects-grid .project-category-card','.project-cards-grid .project-card','.timeline .timeline-item'].forEach(sel => {
       document.querySelectorAll(sel).forEach((el, i) => {
+        if (el.closest('.hero')) return;
         el.classList.add('mob-fade', 'mob-stagger');
         el.style.setProperty('--stagger-delay', (i * 0.08) + 's');
       });
     });
     document.querySelectorAll('.skill-category').forEach(cat => {
+      if (cat.closest('.hero')) return;
       cat.querySelectorAll('.skill-item').forEach((item, i) => {
         item.classList.add('mob-fade', 'mob-stagger');
         item.style.setProperty('--stagger-delay', (i * 0.04) + 's');
