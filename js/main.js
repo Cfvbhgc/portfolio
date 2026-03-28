@@ -996,37 +996,44 @@ document.addEventListener('DOMContentLoaded', () => {
     "Цифровой дневник настроений": {
       desc: "Полноценное React-приложение для ежедневного отслеживания эмоционального состояния. Пользователь выбирает настроение, добавляет заметки и видит красочную статистику за неделю, месяц и год. Интерфейс адаптируется по цветовой гамме к выбранному настроению, создавая уникальный визуальный опыт. Данные хранятся локально с возможностью экспорта.",
       features: ["Интерактивные графики настроений (Chart.js)", "Автоматическая цветовая тема под эмоцию", "Экспорт данных в PDF и CSV", "Напоминания о заполнении дневника"],
-      difficulty: "Middle", time: "~3 недели"
+      difficulty: "Middle", time: "~3 недели",
+      siteUrl: "https://mood-diary-ochre.vercel.app",
+      githubUrl: "https://github.com/Cfvbhgc/mood-diary"
     },
     "Semiglobe Brasil": {
       desc: "Премиальный лендинг для запуска бразильского бренда на международном рынке. Сайт включает параллакс-эффекты, плавные анимации при скролле, мультиязычность (PT/EN/ES) и адаптивную вёрстку. Особое внимание уделено перфомансу — все анимации работают через GPU-ускорение с GSAP.",
       features: ["Многослойный параллакс на GSAP", "Мультиязычность без перезагрузки", "Анимированная галерея продуктов", "SEO-оптимизация и Open Graph теги"],
-      difficulty: "Middle", time: "~2 недели"
+      difficulty: "Middle", time: "~2 недели",
+      siteUrl: "https://semiglobe-brasil.vercel.app",
+      githubUrl: "https://github.com/Cfvbhgc/semiglobe-brasil"
     },
     "Shemberg": {
       desc: "Каталог премиальных окон и фасадных систем Schuco с расширенной фильтрацией по характеристикам. Включает галерею готовых объектов с лайтбоксом, 3D-превью моделей через Three.js и калькулятор стоимости. Адаптивный дизайн с мобильным каталогом.",
       features: ["3D-визуализация оконных профилей (Three.js)", "Фильтрация по типу, размеру, цвету", "Интерактивный калькулятор стоимости", "Галерея реализованных проектов"],
-      difficulty: "Senior", time: "~1 месяц"
+      difficulty: "Senior", time: "~1 месяц",
+      siteUrl: "https://shemberg-windows.vercel.app",
+      githubUrl: "https://github.com/Cfvbhgc/shemberg-windows"
     },
     "Hero Design Portfolio": {
       desc: "Сайт-портфолио для дизайнера с акцентом на мощный hero-блок и storytelling через анимации. Каждая секция рассказывает историю проектов через последовательные анимации при скролле. Использует GSAP ScrollTrigger для кинематографичного эффекта.",
       features: ["Кинематографические scroll-анимации", "Кастомный курсор с hover-эффектами", "Плавные переходы между секциями", "Ленивая загрузка изображений"],
-      difficulty: "Middle", time: "~2 недели"
-    },
-    "InvestCalc": {
-      desc: "Интерактивный калькулятор инвестиций для расчёта доходности портфеля. Пользователь вводит сумму, срок и стратегию, а приложение строит графики прогнозируемой доходности с учётом инфляции и налогов. Сравнение нескольких стратегий на одном графике.",
-      features: ["Графики доходности с Chart.js", "Сравнение до 4 стратегий одновременно", "Учёт инфляции и налогов", "Экспорт результатов в PDF"],
-      difficulty: "Middle", time: "~2 недели"
+      difficulty: "Middle", time: "~2 недели",
+      siteUrl: "https://hero-design-taupe.vercel.app",
+      githubUrl: "https://github.com/Cfvbhgc/hero-design"
     },
     "SalesDash": {
       desc: "Дашборд аналитики продаж с real-time обновлением данных через REST API. Включает графики выручки, конверсии, топ-продуктов и географию клиентов. Фильтры по дате, категории и менеджеру. Экспорт отчётов в Excel и PDF.",
       features: ["Real-time обновление данных", "Множественные типы графиков", "Экспорт в Excel и PDF", "Фильтрация по 5+ параметрам"],
-      difficulty: "Senior", time: "~1 месяц"
+      difficulty: "Senior", time: "~1 месяц",
+      siteUrl: "https://sales-dash-teal.vercel.app",
+      githubUrl: "https://github.com/Cfvbhgc/sales-dash"
     },
     "DevConf Landing": {
       desc: "Лендинг IT-конференции с живым таймером обратного отсчёта до мероприятия. Содержит программу докладов с фильтрацией по трекам, профили спикеров, интерактивную карту площадки и форму регистрации с валидацией.",
       features: ["Таймер обратного отсчёта", "Фильтрация докладов по трекам", "Интерактивная карта площадки", "Форма регистрации с валидацией"],
-      difficulty: "Junior", time: "~1 неделя"
+      difficulty: "Junior", time: "~1 неделя",
+      siteUrl: "https://cfvbhgc.github.io/devconf-landing/",
+      githubUrl: "https://github.com/Cfvbhgc/devconf-landing"
     },
     // ---- Python ----
     "MarketAPI": {
@@ -1345,6 +1352,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <ul></ul>
         </div>
         <div class="modal-meta"></div>
+        <div class="modal-links"></div>
         <button class="modal-close-bottom">Закрыть</button>
       </div>
     </div>
@@ -1406,6 +1414,18 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="modal-time">${data.time}</span>
       </div>
     `;
+
+    // Ссылки на сайт и GitHub
+    const linksContainer = modalScrollContent.querySelector('.modal-links');
+    linksContainer.innerHTML = '';
+    if (data.siteUrl || data.githubUrl) {
+      if (data.siteUrl) {
+        linksContainer.innerHTML += `<a href="${data.siteUrl}" target="_blank" rel="noopener noreferrer" class="modal-link-primary">Открыть сайт →</a>`;
+      }
+      if (data.githubUrl) {
+        linksContainer.innerHTML += `<a href="${data.githubUrl}" target="_blank" rel="noopener noreferrer" class="modal-link-ghost">GitHub</a>`;
+      }
+    }
 
     modalOverlay.classList.add('active');
     document.body.classList.add('modal-open');
