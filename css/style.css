@@ -200,7 +200,7 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 @keyframes neonPulse{0%,100%{box-shadow:0 0 20px rgba(124,58,237,.3),0 0 40px rgba(124,58,237,.12)}50%{box-shadow:0 0 30px rgba(124,58,237,.5),0 0 60px rgba(124,58,237,.2)}}
 
 /* Card shine overlay (for 3D tilt) */
-.card-shine{position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;z-index:3;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(255,255,255,.08) 0%,transparent 60%)}
+.card-shine{position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;z-index:1;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(255,255,255,.08) 0%,transparent 60%)}
 .project-card:hover .card-shine{opacity:1}
 
 /* Card Background Image */
@@ -215,14 +215,14 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .project-card:hover .gradient-placeholder{transform:scale(1.05)}
 .grad-1{background:linear-gradient(135deg,#7c3aed,#2563eb)}.grad-2{background:linear-gradient(135deg,#06b6d4,#3b82f6)}.grad-3{background:linear-gradient(135deg,#f59e0b,#ef4444)}.grad-4{background:linear-gradient(135deg,#10b981,#3b82f6)}.grad-5{background:linear-gradient(135deg,#ec4899,#8b5cf6)}.grad-6{background:linear-gradient(135deg,#14b8a6,#6366f1)}.grad-7{background:linear-gradient(135deg,#f97316,#eab308)}.grad-8{background:linear-gradient(135deg,#6366f1,#a855f7)}.grad-9{background:linear-gradient(135deg,#22d3ee,#a78bfa)}.grad-10{background:linear-gradient(135deg,#e11d48,#7c3aed)}
 
-.project-card-body{padding:1.5rem;position:relative;z-index:2}
+.project-card-body{padding:1.5rem;position:relative;z-index:4}
 .project-card-body h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
 .project-card-body p{font-size:.9rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem}
 .project-tags{display:flex;flex-wrap:wrap;gap:.4rem}
 .project-tag{padding:.2rem .6rem;background:rgba(124,58,237,.1);color:var(--accent-light);border-radius:6px;font-size:.72rem;font-weight:600;font-family:'JetBrains Mono',monospace}
 
 /* Project card links */
-.project-card-links{display:flex;gap:.6rem;margin-top:1rem}
+.project-card-links{display:flex;gap:.6rem;margin-top:1rem;position:relative;z-index:5}
 .project-link-primary{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.1rem;background:var(--accent);color:#fff;font-size:.82rem;font-weight:600;border-radius:8px;transition:background .2s,transform .2s,box-shadow .2s;text-decoration:none}
 .project-link-primary:hover{background:#6d28d9;transform:translateY(-1px);box-shadow:0 4px 15px var(--accent-glow)}
 .project-link-ghost{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.1rem;border:1px solid var(--border);color:var(--text-muted);font-size:.82rem;font-weight:600;border-radius:8px;transition:border-color .2s,color .2s,transform .2s;text-decoration:none}
@@ -595,8 +595,12 @@ body.modal-open{overflow:hidden}
     background:conic-gradient(from 0deg,transparent,rgba(124,58,237,.3),transparent,transparent);
     opacity:0;transition:opacity .5s;z-index:0}
   .project-card.mob-visible::before{animation:mobBorderSpin 6s linear infinite;opacity:.2}
-  .project-card::after{content:'';position:absolute;inset:1px;background:var(--bg-card);border-radius:calc(var(--radius) - 1px);z-index:0}
+  .project-card::after{content:'';position:absolute;inset:1px;background:var(--bg-card);border-radius:calc(var(--radius) - 1px);z-index:0;pointer-events:none}
   .project-card>*{position:relative;z-index:1}
+
+  /* Кнопки ссылок в карточках */
+  .project-card-links{position:relative;z-index:5}
+  .project-link-primary,.project-link-ghost{pointer-events:auto}
 
   /* Telegram button — epic pulse with rings */
   .telegram-btn{animation:mobTgPulse 3s ease-in-out infinite;position:relative}
