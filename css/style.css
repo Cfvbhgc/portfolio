@@ -357,8 +357,17 @@ body.modal-open{overflow:hidden}
   #particles-canvas{display:none!important}
   #mob-global-canvas{display:block}
 
+  /* All content above the fixed canvas */
+  .navbar{z-index:1000}
+  .mobile-menu{z-index:999}
+  .hero{position:relative;z-index:2}
+  .section,.skills-section,.project-cards-section,.category-hero,.back-section{position:relative;z-index:2;background:var(--bg)}
+  .footer{position:relative;z-index:2;background:var(--bg)}
+  .hero .hero-content{position:relative;z-index:5}
+  .hero .mob-hero-grid,.hero .mob-blob,.hero .mob-shape,.hero .mob-code-rain,.hero .hero-star{z-index:1}
+
   /* Hero — epic animated background */
-  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));background:#0a0a0f;position:relative;overflow:hidden}
+  .hero{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h));background:#0a0a0f;overflow:hidden}
 
   /* Animated gradient layer */
   .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(-45deg,#0a0a0f,#1a0a2e,#0f0a3e,#120a20,#0a1a2e);background-size:400% 400%;animation:gradientShift 12s ease infinite;opacity:.8;z-index:0}
