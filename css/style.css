@@ -190,7 +190,7 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 .badge{display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .75rem;background:rgba(124,58,237,.12);color:var(--accent-light);border-radius:50px;font-size:.78rem;font-weight:600;font-family:'JetBrains Mono',monospace;width:fit-content}
 
 /* ---------- Project Cards (Category Pages) ---------- */
-.project-cards-section{padding:0 0 100px}
+.project-cards-section{padding:2.5rem 0 100px}
 .project-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
 
 .project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;position:relative;transition:border-color var(--dur) var(--ease);transform-style:preserve-3d;perspective:1000px;will-change:transform}
@@ -603,8 +603,13 @@ body.modal-open{overflow:hidden}
   .project-card>*{position:relative;z-index:1}
 
   /* Кнопки ссылок в карточках */
-  .project-card-links{position:relative;z-index:5}
-  .project-link-primary,.project-link-ghost{pointer-events:auto}
+  .project-card-links{position:relative;z-index:5;display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap}
+  .project-link-primary,.project-link-ghost{pointer-events:auto;display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .9rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;transition:all var(--dur) var(--ease);text-decoration:none;line-height:1.2}
+  .project-link-primary{background:var(--accent);color:#fff}
+  .project-link-primary:hover{background:var(--accent-light);box-shadow:0 4px 20px var(--accent-glow)}
+  .project-link-ghost{border:1px solid rgba(255,255,255,.15);color:var(--text-muted);background:transparent}
+  .project-link-ghost:hover{border-color:var(--accent-light);color:var(--text);background:rgba(124,58,237,.08)}
+  .project-link-ghost svg,.project-link-primary svg{width:15px;height:15px;flex-shrink:0}
 
   /* Telegram button — epic pulse with rings */
   .telegram-btn{animation:mobTgPulse 3s ease-in-out infinite;position:relative}
