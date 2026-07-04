@@ -1,0 +1,49 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  @include flex-center();
+  z-index: 10;
+
+  html.no-scroll & {
+    overflow: hidden;
+    padding-right: calc(var(--scrollbar-width, 0px));
+
+    @include tablet {
+      padding-right: calc(var(--actual-scrollbar-width, 0px));
+    }
+  }
+}
+
+.header__wrapper {
+  @include flex-center(row, space-between);
+}
+
+.header--dark {
+  color: $black;
+}
+
+.header__about {
+  display: none;
+  .about-page & {
+    display: block;
+  }
+}
+
+.header__main {
+  .about-page & {
+    display: none;
+  }
+}
+
+.header__main,
+.header__about {
+  --mr: 20px;
+  margin-left: auto;
+  margin-right: var(--mr);
+}

@@ -1,0 +1,165 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.projects-slider {
+  --slide-width: 22vw;
+  --slide-padding: 2vw;
+  --gap: 0;
+  --ratio: 300 / 400;
+
+  width: 100vw;
+  height: vh(100);
+  overflow: hidden;
+
+  touch-action: none;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  transform: translateX(100vw);
+  transition: transform 0.7s $app-default-easing;
+  transition-delay: 0.2s;
+
+  &.projects-slider--ready {
+    transform: translateX(0);
+  }
+
+  @include desktop-large {
+    --slide-width: 20vw;
+  }
+
+  @include tablet {
+    --slide-width: 50vw;
+  }
+}
+
+.projects-slider__viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.projects-slider__webgl {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.projects-slider__webgl canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.projects-slider__track {
+  --progress: 0px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  width: max-content;
+  z-index: 2;
+  transform: translate3d(var(--progress), -50%, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+
+  @include tablet {
+    top: 45%;
+  }
+}
+
+.projects-slider__counter {
+  --bottom: 3.5rem;
+  --p: 10px;
+  z-index: 11;
+
+  position: absolute;
+  bottom: var(--bottom);
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+  padding: var(--p);
+
+  background-color: rgba($black, 0.5);
+
+  @include tablet() {
+    --bottom: 7svh;
+  }
+}
+
+.projects-slider__scroll {
+  --pv: 10px;
+  --ph: 15px;
+  --t: 50%;
+  --l: 10%;
+
+  padding: var(--pv) var(--ph);
+  color: $blue;
+  position: absolute;
+  top: var(--t);
+  left: var(--l);
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-transform: uppercase;
+  transition: opacity 0.5s $app-default-easing;
+
+  @include tablet {
+    --t: 75%;
+    --l: 50%;
+    transform: translateX(-50%);
+  }
+
+  &::after {
+    --h: 24px;
+    --w: 24px;
+
+    content: "";
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    mask-image: url("/portfolio/static/icons/arrow-top.svg");
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    background-color: $blue;
+
+    animation: scroll-arrow-soft 2s cubic-bezier(0.25, 0.25, 0, 1) infinite;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes scroll-arrow-soft {
+  0% {
+    transform: translateX(-50%) translateY(-6px) rotate(180deg);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(10px) rotate(180deg);
+    opacity: 0;
+  }
+}

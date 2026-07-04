@@ -1,0 +1,1 @@
+export { ProjectsSlider, type RawProps as ProjectsSliderRawProps } from './ProjectsSlider'

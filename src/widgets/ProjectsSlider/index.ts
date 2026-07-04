@@ -1,0 +1,1 @@
+export { ProjectsSlider, type ProjectsSliderRawProps } from './ui'

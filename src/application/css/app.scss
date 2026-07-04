@@ -1,0 +1,46 @@
+// base
+@use "base/custom-properties";
+@use "base/reset";
+@use "base/fonts";
+@use "base/keyframes";
+
+// atoms
+@use "layout/typography";
+@use "layout/common";
+@use "layout/wysiwyg";
+@use "@/shared/ui/OrientationImage/OrientationImage.scss";
+@use "@/shared/ui/Reveal/Reveal.scss";
+@use "@/shared/ui/MarqueeText/MarqueeText.scss";
+@use "@/shared/ui/Parallaxed/Parallaxed.scss";
+
+// shared
+@use "@/shared/ui/LangSwitch/LangSwitch.scss";
+@use "@/shared/ui/TextAnimation/TextAnimation.scss";
+@use "@/shared/ui/RotateText/RotateText.scss";
+@use "@/shared/ui/AnimatedCounter/AnimatedCounter.scss";
+@use "@/shared/ui/Preloader/Preloader.scss";
+@use "@/shared/ui/PageTransitionOverlay/PageTransitionOverlay.scss";
+
+// entities
+@use "@/entities/project/ui/ProjectCard.scss";
+
+// widgets
+@use "@/widgets/ProjectsSlider/ui/ProjectsSlider.scss";
+@use "@/widgets/Header/Header.scss";
+@use "@/widgets/Footer/Footer.scss";
+
+// sections
+@use "@/pages-view/AboutPageView/sections/Directions/DirectionItem/DirectionItem.scss";
+@use "@/pages-view/AboutPageView/sections/Directions/DirectionsNumber/DirectionsNumber.scss";
+@use "@/pages-view/AboutPageView/sections/Contacts/ContactsItem/ContactsItem.scss";
+@use "@/pages-view/AboutPageView/sections/Hero/Hero.scss";
+@use "@/pages-view/AboutPageView/sections/Intro/Intro.scss";
+@use "@/pages-view/AboutPageView/sections/Directions/Directions.scss";
+@use "@/pages-view/AboutPageView/sections/Contacts/Contacts.scss";
+
+
+// pages
+@use "@/pages-view/IndexPageView/IndexPageView.scss";
+@use "@/pages-view/AboutPageView/AboutPageView.scss";
+@use "@/pages-view/ErrorPageView/ErrorPageView.scss";
+@use "@/pages-view/TextPageView/TextPageView.scss";
