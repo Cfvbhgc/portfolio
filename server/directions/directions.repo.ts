@@ -107,62 +107,65 @@ export const DIRECTIONS_BASE = [
     },
 ] satisfies IDirectionBase[];
 
-const REPOS: Record<string, [name: string, stack: string][]> = {
+const REPOS: Record<
+    string,
+    [name: string, stack: string, ruTitle: string, enTitle: string][]
+> = {
     backend: [
-        ["auth-micro", "FastAPI · PostgreSQL · Redis · JWT / 2FA"],
-        ["booking-api", ".NET 8 · EF Core · PostgreSQL"],
-        ["currency-x", "Java 17 · Spring Boot · gRPC · Redis"],
-        ["foodflow-api", "Node.js · Express · MongoDB · Stripe"],
-        ["img-processor", ".NET 8 · ImageSharp"],
-        ["market-api", "Python · Flask · PostgreSQL"],
-        ["meet-room", "Java · Spring Boot · JPA"],
-        ["news-aggr", "PHP 8.2 · Slim 4 · MySQL"],
-        ["notify-hub", "Node.js · RabbitMQ · WebSocket"],
-        ["pdf-forge", "Node.js · Puppeteer"],
-        ["price-radar", "FastAPI · Celery · Redis"],
-        ["snaplink", "TypeScript · Express · Redis"],
+        ["auth-micro", "FastAPI · PostgreSQL · Redis · JWT / 2FA", "Микросервис авторизации", "Auth microservice"],
+        ["booking-api", ".NET 8 · EF Core · PostgreSQL", "API бронирования", "Booking API"],
+        ["currency-x", "Java 17 · Spring Boot · gRPC · Redis", "Сервис курсов валют", "Currency rates service"],
+        ["foodflow-api", "Node.js · Express · MongoDB · Stripe", "API доставки еды", "Food delivery API"],
+        ["img-processor", ".NET 8 · ImageSharp", "Обработка изображений", "Image processing service"],
+        ["market-api", "Python · Flask · PostgreSQL", "API интернет-магазина", "E-commerce API"],
+        ["meet-room", "Java · Spring Boot · JPA", "Бронирование переговорок", "Meeting room booking"],
+        ["news-aggr", "PHP 8.2 · Slim 4 · MySQL", "Агрегатор новостей", "News aggregator"],
+        ["notify-hub", "Node.js · RabbitMQ · WebSocket", "Центр уведомлений", "Notification hub"],
+        ["pdf-forge", "Node.js · Puppeteer", "Генератор PDF-документов", "PDF generator"],
+        ["price-radar", "FastAPI · Celery · Redis", "Мониторинг цен", "Price monitoring"],
+        ["snaplink", "TypeScript · Express · Redis", "Сокращатель ссылок", "Link shortener"],
     ],
     bots: [
-        ["auto-poster", "Python · aiogram 3 · Celery"],
-        ["quiz-master", "Python · aiogram 3 · PostgreSQL · Redis"],
-        ["schedule-bot", "Python · aiogram 3 · APScheduler"],
-        ["server-watch", "Python · psutil · matplotlib"],
-        ["shop-bot", "Python · aiogram 3 · PostgreSQL"],
+        ["auto-poster", "Python · aiogram 3 · Celery", "Бот автопостинга", "Auto-posting bot"],
+        ["quiz-master", "Python · aiogram 3 · PostgreSQL · Redis", "Квиз-бот с рейтингом", "Quiz bot"],
+        ["schedule-bot", "Python · aiogram 3 · APScheduler", "Бот-расписание", "Schedule bot"],
+        ["server-watch", "Python · psutil · matplotlib", "Мониторинг серверов", "Server monitoring bot"],
+        ["shop-bot", "Python · aiogram 3 · PostgreSQL", "Бот-магазин", "Shop bot"],
     ],
     fullstack: [
-        ["admin-pro", "Laravel 11 · Vue 3 · MySQL"],
-        ["blog-cms", "PHP 8.2 · MVC · MySQL"],
-        ["helpdesk", "Laravel 11 · Livewire 3 · MySQL"],
-        ["live-chat", "Node.js · Socket.io · MongoDB"],
-        ["shop-engine", "Laravel 11 · Blade · MySQL"],
-        ["stock-manager", ".NET 8 · Blazor Server · SQLite"],
-        ["task-flow", "Java · Spring Boot · Thymeleaf"],
+        ["admin-pro", "Laravel 11 · Vue 3 · MySQL", "Админ-панель", "Admin panel"],
+        ["blog-cms", "PHP 8.2 · MVC · MySQL", "CMS для блога", "Blog CMS"],
+        ["helpdesk", "Laravel 11 · Livewire 3 · MySQL", "Служба поддержки", "Helpdesk"],
+        ["live-chat", "Node.js · Socket.io · MongoDB", "Реалтайм-чат", "Real-time chat"],
+        ["shop-engine", "Laravel 11 · Blade · MySQL", "Движок интернет-магазина", "E-commerce engine"],
+        ["stock-manager", ".NET 8 · Blazor Server · SQLite", "Складской учёт", "Inventory manager"],
+        ["task-flow", "Java · Spring Boot · Thymeleaf", "Таск-менеджер", "Task manager"],
     ],
     mobile: [
-        ["fit-log", "Kotlin · Room · MVP"],
-        ["habit-pulse", "Kotlin · Jetpack Compose · Room"],
-        ["note-keeper", "Java · Android · Room"],
-        ["quick-chat", "Kotlin · Compose · Hilt"],
-        ["split-pay", "Kotlin · Compose · Clean Architecture"],
-        ["weather-now", "Kotlin · Compose · Retrofit"],
+        ["fit-log", "Kotlin · Room · MVP", "Дневник тренировок", "Workout log"],
+        ["habit-pulse", "Kotlin · Jetpack Compose · Room", "Трекер привычек", "Habit tracker"],
+        ["note-keeper", "Java · Android · Room", "Заметки", "Notes app"],
+        ["quick-chat", "Kotlin · Compose · Hilt", "Мессенджер", "Messenger"],
+        ["split-pay", "Kotlin · Compose · Clean Architecture", "Делёж счёта в компании", "Bill splitting"],
+        ["weather-now", "Kotlin · Compose · Retrofit", "Погода", "Weather app"],
     ],
     desktop: [
-        ["fin-tracker", "C# · WPF · SQLite"],
-        ["particle-sim", "C++17 · OpenGL · GLFW"],
-        ["thread-serv", "C++17 · POSIX threads"],
+        ["fin-tracker", "C# · WPF · SQLite", "Учёт личных финансов", "Finance tracker"],
+        ["particle-sim", "C++17 · OpenGL · GLFW", "Симуляция частиц", "Particle simulation"],
+        ["thread-serv", "C++17 · POSIX threads", "Многопоточный сервер", "Multithreaded server"],
     ],
     cli: [
-        ["chess-engine", "C++17 · UCI"],
-        ["file-nav", "C · ncurses"],
-        ["huff-compress", "C++ · Huffman"],
-        ["log-analyzer", "Java 17 · Picocli"],
-        ["sheet-sync", "Python · pandas · ReportLab"],
+        ["chess-engine", "C++17 · UCI", "Шахматный движок", "Chess engine"],
+        ["file-nav", "C · ncurses", "Файловый менеджер", "File manager"],
+        ["huff-compress", "C++ · Huffman", "Архиватор (Хаффман)", "Huffman compressor"],
+        ["log-analyzer", "Java 17 · Picocli", "Анализатор логов", "Log analyzer"],
+        ["sheet-sync", "Python · pandas · ReportLab", "Отчёты из таблиц", "Spreadsheet reports"],
     ],
 };
 
 export const DIRECTION_CATEGORIES_BASE = Object.entries(REPOS).flatMap(
     ([directionId, repos]) =>
-        repos.map(([name, stack], index) => ({
+        repos.map(([name, stack, ruTitle, enTitle], index) => ({
             id: name,
             directionId,
             order: index + 1,
@@ -170,11 +173,11 @@ export const DIRECTION_CATEGORIES_BASE = Object.entries(REPOS).flatMap(
             href: `${GH}${name}`,
 
             ru: {
-                title: name,
+                title: ruTitle,
             },
 
             en: {
-                title: name,
+                title: enTitle,
             },
         })),
 ) satisfies IDirectionCategoryBase[];

@@ -2,22 +2,17 @@
 @use "@/application/css/utils/mixins" as *;
 
 .directions-number {
-  --top: 100px;
-  --left: 100px;
+  --h: clamp(140px, 18vw, 220px);
+  --top: calc(50svh - var(--h) / 2);
   --pb: 30vh;
   position: sticky;
   top: var(--top);
-  left: var(--left);
   margin-bottom: var(--pb);
-  height: clamp(140px, 18vw, 220px);
+  height: var(--h);
   perspective: 1200px;
 
   @include tablet {
     display: none;
-  }
-
-  @include desktop-large {
-    --top: 300px;
   }
 }
 
@@ -25,6 +20,7 @@
   position: relative;
   width: 50%;
   height: 100%;
+  margin: 0 auto;
 }
 
 .directions-number__card {
