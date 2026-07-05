@@ -83,7 +83,7 @@ export const Preloader = () => {
         split="letters"
         needsExit={needsExit}
         stagger={0.025}
-        text="EVGENIA'S P. PORTFOLIO"
+        text="DIGITALPR0 — PORTFOLIO"
         className="preloader__text h1"
       />
       <div className="preloader__count">{count}%</div>

@@ -144,6 +144,43 @@
   }
 }
 
+.projects-slider__all {
+  --pv: 10px;
+  --ph: 15px;
+
+  padding: var(--pv) var(--ph);
+  color: $blue;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translate(50%, -50%);
+  z-index: 10;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba($blue, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.5s $app-default-easing,
+    border-color 0.3s $app-default-easing;
+
+  &.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @include hover {
+    border-color: $blue;
+  }
+
+  @include tablet {
+    top: auto;
+    bottom: 16svh;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
 @keyframes scroll-arrow-soft {
   0% {
     transform: translateX(-50%) translateY(-6px) rotate(180deg);

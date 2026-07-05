@@ -1,7 +1,5 @@
 import { useMemo, useRef } from "react";
 import {
-  Directions,
-  DirectionsRawProps,
   Hero,
   HeroRawProps,
   Intro,
@@ -16,19 +14,16 @@ import DefaultLayout from "@/shared/ui/DefaultLayout";
 export type RawProps = {
   heroSectionData: HeroRawProps;
   introSectionData: IntroRawProps;
-  directionsSectionData: DirectionsRawProps;
   contactsSectionData: ContactsRawProps;
 };
 
 const AboutPageView = ({
   heroSectionData,
   introSectionData,
-  directionsSectionData,
   contactsSectionData,
 }: RawProps) => {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
-  const directionsRef = useRef<HTMLDivElement | null>(null);
   const contactsRef = useRef<HTMLDivElement | null>(null);
 
   const sectionRefs = useMemo(() => [heroRef, introRef, contactsRef], []);
@@ -47,12 +42,6 @@ const AboutPageView = ({
         <Intro
           ref={introRef}
           {...introSectionData}
-          data-header-class={DEFAULT_HEADER_CLASS}
-        />
-
-        <Directions
-          ref={directionsRef}
-          {...directionsSectionData}
           data-header-class={DEFAULT_HEADER_CLASS}
         />
 

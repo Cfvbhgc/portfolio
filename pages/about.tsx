@@ -5,7 +5,6 @@ import { CommonPageProps } from "@/shared/model/types";
 import AboutPageView, {
   AboutPageViewRawProps,
 } from "@/pages-view/AboutPageView";
-import { getDirectionCategories, getDirections } from "../server/directions";
 import { getContacts } from "../server/contacts";
 import { tp } from "@/shared/lib/formatting";
 import { AppLocale, DEFAULT_LOCALE } from "@/shared/сonfig/const";
@@ -13,14 +12,12 @@ import { AppLocale, DEFAULT_LOCALE } from "@/shared/сonfig/const";
 const AboutPage = ({
   heroSectionData,
   introSectionData,
-  directionsSectionData,
   contactsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <AboutPageView
       heroSectionData={heroSectionData}
       introSectionData={introSectionData}
-      directionsSectionData={directionsSectionData}
       contactsSectionData={contactsSectionData}
     />
   );
@@ -33,21 +30,10 @@ type PageProps = CommonPageProps & AboutPageViewRawProps;
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const locale = (process.env.NEXT_PUBLIC_LOCALE as AppLocale) || DEFAULT_LOCALE;
 
-  const [commonPageProps, directions, categories, contacts] = await Promise.all(
-    [
-      getCommonPageProps(locale),
-      getDirections(locale),
-      getDirectionCategories(locale),
-      getContacts(locale),
-    ],
-  );
-
-  const directionsWithCategories = directions.map((direction) => ({
-    ...direction,
-    categories: categories
-      .filter((category) => category.directionId === direction.id)
-      .sort((a, b) => a.order - b.order),
-  }));
+  const [commonPageProps, contacts] = await Promise.all([
+    getCommonPageProps(locale),
+    getContacts(locale),
+  ]);
 
   const isEn = locale === "en";
 
@@ -80,10 +66,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
             ? "I work with Python, Node.js, PHP, Java, C# and Kotlin: REST and gRPC APIs, microservices, real-time chats, dashboards, bots, desktop. I value clean architecture and take projects all the way to a working result. Open to commissions."
             : "Работаю с Python, Node.js, PHP, Java, C# и Kotlin: REST и gRPC API, микросервисы, реалтайм-чаты, дашборды, боты, десктоп. Ценю чистую архитектуру и довожу проекты до рабочего результата. Открыт к заказам.",
         ),
-      },
-      directionsSectionData: {
-        header: tp(isEn ? "All projects" : "Все проекты"),
-        directions: directionsWithCategories,
       },
       contactsSectionData: {
         header: isEn ? "Contacts" : "Контакты",

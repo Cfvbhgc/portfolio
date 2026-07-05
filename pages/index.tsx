@@ -45,6 +45,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       projectsSectionData: {
         projects,
         scrollBtn: locale === "en" ? "Scroll Down" : "Скролл вниз",
+        allProjects: {
+          text: locale === "en" ? "View all projects" : "Смотреть все проекты",
+          href: "/projects",
+        },
       },
     } satisfies PageProps,
   };

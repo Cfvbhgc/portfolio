@@ -7,10 +7,15 @@ import { format2 } from "@/shared/lib/strings";
 import { useAppReadyStore } from "@/shared/model/app-ready";
 import { IProjectFlat, ProjectCard } from "@/entities/project";
 import { useInView } from "motion/react";
+import Link from "@/shared/ui/Link";
 
 export type RawProps = {
   projects: IProjectFlat[];
   scrollBtn: string;
+  allProjects: {
+    text: string;
+    href: string;
+  };
 };
 
 type Props = React.HTMLAttributes<HTMLElement> & RawProps;
@@ -18,6 +23,7 @@ type Props = React.HTMLAttributes<HTMLElement> & RawProps;
 export const ProjectsSlider = ({
   projects,
   scrollBtn,
+  allProjects,
   className,
   ...props
 }: Props) => {
@@ -130,6 +136,14 @@ export const ProjectsSlider = ({
         <div className="projects-slider__scroll text-s" ref={scrollHintRef}>
           {scrollBtn}
         </div>
+
+        <Link
+          href={allProjects.href}
+          className={classNames("projects-slider__all text-s", {
+            "is-visible": currentIndex === projects.length - 1,
+          })}>
+          {allProjects.text}
+        </Link>
       </div>
     </section>
   );
