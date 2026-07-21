@@ -52,7 +52,7 @@ export const ProjectsSlider = ({
     [projects],
   );
 
-  useThreeProjectsOverlay({
+  const { webglUnavailable } = useThreeProjectsOverlay({
     hostRef,
     mediaRefs,
     imageUrls,
@@ -103,6 +103,7 @@ export const ProjectsSlider = ({
       ref={rootRef}
       className={classNames("projects-slider", className, {
         "projects-slider--ready": inView && appReady,
+        "projects-slider--no-webgl": webglUnavailable,
       })}>
       <div className="projects-slider__counter" aria-hidden="true">
         <AnimatedCounter value={currentIndex + 1} digits={2} />

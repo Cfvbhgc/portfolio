@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useMemo, useRef } from "react";
+import { RefObject, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { vertexShader, fragmentShader } from "../shaders";
 
@@ -34,6 +34,8 @@ export const useThreeProjectsOverlay = ({
 }: Params) => {
     const urlsKey = useMemo(() => imageUrls.join("|"), [imageUrls]);
 
+    const [webglUnavailable, setWebglUnavailable] = useState(false);
+
     const targetRef = useRef(progressPx);
     const currentRef = useRef(progressPx);
 
@@ -55,8 +57,10 @@ export const useThreeProjectsOverlay = ({
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         } catch {
             // Браузеры без доступного WebGL-контекста (отключён политикой,
-            // старое железо, часть мобильных) — декоративный слой пропускаем,
-            // DOM-карточки с картинками остаются на месте.
+            // старое железо, часть мобильных): WebGL-слой пропускаем и
+            // показываем обычные DOM-картинки как запасной вариант — иначе
+            // превью проектов рисует только WebGL и карточки остаются пустыми.
+            setWebglUnavailable(true);
             return;
         }
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
@@ -221,5 +225,5 @@ export const useThreeProjectsOverlay = ({
         };
     }, [enabled, hostRef, mediaRefs, urlsKey, maxDpr, segX, segY]);
 
-    return null;
+    return { webglUnavailable };
 };

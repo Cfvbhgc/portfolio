@@ -59,6 +59,10 @@
   overflow: hidden;
 }
 
+.projects-slider--no-webgl .project-card__image-container {
+  opacity: 1;
+}
+
 .project-card__image {
   object-fit: cover;
   user-select: none;
