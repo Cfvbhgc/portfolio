@@ -50,7 +50,15 @@ export const useThreeProjectsOverlay = ({
         if (!enabled || !host) return;
         if (!imageUrls.length) return;
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        let renderer: THREE.WebGLRenderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        } catch {
+            // Браузеры без доступного WebGL-контекста (отключён политикой,
+            // старое железо, часть мобильных) — декоративный слой пропускаем,
+            // DOM-карточки с картинками остаются на месте.
+            return;
+        }
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
         renderer.setClearAlpha(0);
         host.appendChild(renderer.domElement);
