@@ -1,0 +1,110 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.serious {
+  padding-top: clamp(96px, 13vh, 168px);
+  padding-bottom: clamp(64px, 9vh, 120px);
+}
+
+.serious__header {
+  margin-bottom: clamp(28px, 4.5vh, 56px);
+}
+
+.serious__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.serious__item {
+  display: flex;
+}
+
+.serious-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  padding: 28px;
+  background: rgba($light-1, 0.02);
+  border: 1px solid rgba($light-1, 0.09);
+  transition:
+    border-color $app-medium-duration $app-default-easing,
+    background-color $app-medium-duration $app-default-easing,
+    transform $app-medium-duration $app-default-easing;
+
+  @include hover {
+    border-color: rgba($light-1, 0.24);
+    background: rgba($light-1, 0.035);
+    transform: translateY(-4px);
+
+    .serious-card__title {
+      color: $blue;
+    }
+  }
+
+  @include mobile {
+    padding: 22px;
+  }
+}
+
+.serious-card__category {
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $blue;
+}
+
+.serious-card__title {
+  color: $light-1;
+  transition: color $app-medium-duration $app-default-easing;
+}
+
+.serious-card__summary {
+  color: rgba($light-1, 0.62);
+  flex-grow: 1;
+}
+
+.serious-card__actions {
+  display: flex;
+  gap: 24px;
+  margin-top: 6px;
+  padding-top: 14px;
+}
+
+.serious-card__btn {
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba($light-1, 0.7);
+  border-bottom: 1px solid rgba($light-1, 0.3);
+  padding-block: 6px 4px;
+  transition:
+    color $app-default-duration $app-default-easing,
+    border-color $app-default-duration $app-default-easing;
+
+  @include hover {
+    color: $light-1;
+    border-color: rgba($light-1, 0.8);
+  }
+}
+
+.serious-card__btn--accent {
+  color: $blue;
+  border-color: rgba($blue, 0.4);
+
+  @include hover {
+    color: $blue;
+    border-color: $blue;
+  }
+}

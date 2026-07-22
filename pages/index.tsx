@@ -5,16 +5,23 @@ import IndexPageView, {
   IndexPageViewRawProps,
 } from "@/pages-view/IndexPageView";
 import { CommonPageProps } from "@/shared/model/types";
-import { getProjects } from "../server/projects";
+import { getProjects, getSeriousProjects } from "../server/projects";
 import { AppLocale, DEFAULT_LOCALE } from "@/shared/сonfig/const";
 
 const IndexPage = ({
   h1,
+  seriousSectionData,
+  landingsHeading,
   projectsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <IndexPageView h1={h1} projectsSectionData={projectsSectionData} />
+      <IndexPageView
+        h1={h1}
+        seriousSectionData={seriousSectionData}
+        landingsHeading={landingsHeading}
+        projectsSectionData={projectsSectionData}
+      />
     </>
   );
 };
@@ -26,9 +33,10 @@ type PageProps = CommonPageProps & IndexPageViewRawProps;
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const locale = (process.env.NEXT_PUBLIC_LOCALE as AppLocale) || DEFAULT_LOCALE;
 
-  const [commonPageProps, projects] = await Promise.all([
+  const [commonPageProps, projects, seriousProjects] = await Promise.all([
     getCommonPageProps(locale),
     getProjects(locale),
+    getSeriousProjects(locale),
   ]);
 
   return {
@@ -42,9 +50,15 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       },
       breadcrumbs: [],
       h1: locale === "en" ? "DigitalPr0 Portfolio" : "Портфолио DigitalPr0",
+      seriousSectionData: {
+        header: locale === "en" ? "Projects" : "Проекты",
+        projects: seriousProjects,
+      },
+      landingsHeading:
+        locale === "en" ? "Web visuals & landings" : "Веб-визуал и лендинги",
       projectsSectionData: {
         projects,
-        scrollBtn: locale === "en" ? "Scroll Down" : "Скролл вниз",
+        scrollBtn: locale === "en" ? "Scroll" : "Скролл",
         allProjects: {
           text: locale === "en" ? "View all projects" : "Смотреть все проекты",
           href: "/projects",
