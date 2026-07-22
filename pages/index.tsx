@@ -11,15 +11,10 @@ import { AppLocale, DEFAULT_LOCALE } from "@/shared/сonfig/const";
 const IndexPage = ({
   h1,
   projectsSectionData,
-  landingsSectionData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <IndexPageView
-        h1={h1}
-        projectsSectionData={projectsSectionData}
-        landingsSectionData={landingsSectionData}
-      />
+      <IndexPageView h1={h1} projectsSectionData={projectsSectionData} />
     </>
   );
 };
@@ -49,17 +44,12 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       breadcrumbs: [],
       h1: locale === "en" ? "DigitalPr0 Portfolio" : "Портфолио DigitalPr0",
       projectsSectionData: {
-        projects: seriousProjects,
+        projects: [...projects, ...seriousProjects],
         scrollBtn: locale === "en" ? "Scroll Down" : "Скролл вниз",
         allProjects: {
           text: locale === "en" ? "View all projects" : "Смотреть все проекты",
           href: "/projects",
         },
-      },
-      landingsSectionData: {
-        header:
-          locale === "en" ? "Web visuals & landings" : "Веб-визуал и лендинги",
-        projects,
       },
     } satisfies PageProps,
   };

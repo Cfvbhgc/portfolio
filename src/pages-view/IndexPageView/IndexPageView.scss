@@ -1,12 +1,12 @@
 @use "@/application/css/utils/mixins" as *;
-@use "@/application/css/base/variables" as *;
 
 .index-page {
-  overflow-x: clip;
+  height: vh(100);
+  overflow: clip;
 }
 
 .index__content {
-  display: flex;
-  flex-direction: column;
+  @include flex-center();
   width: 100%;
+  height: 100%;
 }

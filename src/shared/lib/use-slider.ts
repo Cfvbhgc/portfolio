@@ -5,7 +5,6 @@ type Params = {
     rootRef: RefObject<HTMLElement | null>;
     slidesRef: RefObject<HTMLElement[]>;
     slidesCount: number;
-    active?: boolean;
 };
 
 const getClosestSlideIndex = (
@@ -37,7 +36,6 @@ export const useSlider = ({
     rootRef,
     slidesRef,
     slidesCount,
-    active = true,
 }: Params) => {
     const [progress, setProgress] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,11 +46,6 @@ export const useSlider = ({
     const targetProgressRef = useRef(0);
     const touchStartYRef = useRef(0);
     const targetStartRef = useRef(0);
-    const activeRef = useRef(active);
-
-    useEffect(() => {
-        activeRef.current = active;
-    }, [active]);
 
     useEffect(() => {
         const updateSizes = () => {
@@ -149,18 +142,10 @@ export const useSlider = ({
         };
 
         const handleWheel = (event: WheelEvent) => {
-            if (!activeRef.current) {
-                return;
-            }
-
             updateTarget(targetProgressRef.current - event.deltaY * 0.9);
         };
 
         const handleTouchStart = (event: TouchEvent) => {
-            if (!activeRef.current) {
-                return;
-            }
-
             const touch = event.touches[0];
 
             if (!touch) {
@@ -172,10 +157,6 @@ export const useSlider = ({
         };
 
         const handleTouchMove = (event: TouchEvent) => {
-            if (!activeRef.current) {
-                return;
-            }
-
             const touch = event.touches[0];
 
             if (!touch) {
