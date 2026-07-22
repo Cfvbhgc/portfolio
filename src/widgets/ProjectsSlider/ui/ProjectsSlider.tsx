@@ -8,6 +8,7 @@ import { useAppReadyStore } from "@/shared/model/app-ready";
 import { IProjectFlat, ProjectCard } from "@/entities/project";
 import { useInView } from "motion/react";
 import Link from "@/shared/ui/Link";
+import { useIsMobile } from "@/shared/lib/use-is-mobile";
 
 export type RawProps = {
   projects: IProjectFlat[];
@@ -37,6 +38,7 @@ export const ProjectsSlider = ({
   const scrollHintRef = useRef<HTMLDivElement>(null);
 
   const appReady = useAppReadyStore((s) => s.appReady);
+  const isMobile = useIsMobile();
 
   const { progress, currentIndex } = useSlider({
     rootRef,
@@ -57,7 +59,10 @@ export const ProjectsSlider = ({
     mediaRefs,
     imageUrls,
     progressPx: progress,
+    enabled: !isMobile,
   });
+
+  const showDomImages = webglUnavailable || isMobile;
 
   const setSlideRef = (index: number) => (node: HTMLElement | null) => {
     if (!node) return;
@@ -103,7 +108,7 @@ export const ProjectsSlider = ({
       ref={rootRef}
       className={classNames("projects-slider", className, {
         "projects-slider--ready": inView && appReady,
-        "projects-slider--no-webgl": webglUnavailable,
+        "projects-slider--no-webgl": showDomImages,
       })}>
       <div className="projects-slider__counter" aria-hidden="true">
         <AnimatedCounter value={currentIndex + 1} digits={2} />
