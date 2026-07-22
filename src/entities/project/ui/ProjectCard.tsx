@@ -52,13 +52,15 @@ export const ProjectCard = ({
           {summary && <p className="project-card__summary">{summary}</p>}
 
           <div className="project-card__actions">
-            <a
-              className="project-card__btn"
-              href={href}
-              target="_blank"
-              rel="noreferrer">
-              {isEn ? "Demo" : "Демо"}
-            </a>
+            {href && (
+              <a
+                className="project-card__btn"
+                href={href}
+                target="_blank"
+                rel="noreferrer">
+                {isEn ? "Demo" : "Демо"}
+              </a>
+            )}
             <a
               className="project-card__btn"
               href={github}

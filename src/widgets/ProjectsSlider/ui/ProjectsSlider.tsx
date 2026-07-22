@@ -44,6 +44,7 @@ export const ProjectsSlider = ({
     rootRef,
     slidesRef,
     slidesCount: projects.length,
+    active: inView && !isMobile,
   });
 
   const imageUrls = useMemo(
