@@ -1,5 +1,6 @@
 import Image from "next/image";
 import classNames from "classnames";
+import Link from "@/shared/ui/Link";
 import { IProjectFlat } from "../model";
 
 const isEn = process.env.NEXT_PUBLIC_LOCALE === "en";
@@ -20,6 +21,7 @@ export const ProjectCard = ({
   summary,
   previewImg,
   href,
+  detailHref,
   github,
   active,
   className,
@@ -44,11 +46,25 @@ export const ProjectCard = ({
               draggable={false}
             />
           </div>
+
+          {detailHref && (
+            <Link
+              href={detailHref}
+              className="project-card__media-link"
+              aria-label={name}
+            />
+          )}
         </div>
 
         <div className="project-card__content">
           {category && <p className="project-card__category">{category}</p>}
-          <h3 className="project-card__title h3">{name}</h3>
+          {detailHref ? (
+            <Link href={detailHref} className="project-card__title-link">
+              <h3 className="project-card__title h3">{name}</h3>
+            </Link>
+          ) : (
+            <h3 className="project-card__title h3">{name}</h3>
+          )}
           {summary && <p className="project-card__summary">{summary}</p>}
 
           <div className="project-card__actions">

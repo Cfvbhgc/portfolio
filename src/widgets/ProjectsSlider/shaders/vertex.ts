@@ -15,11 +15,11 @@ void main() {
 
   vec3 p = position;
 
-  p.z = (sin(p.x * 4.0 + uTime) * 0.5 + cos(p.y * 2.0 + uTime) * 0.5) * (0.1 + uSpeed * 0.5);
+  p.z = (sin(p.x * 4.0 + uTime) * 0.5 + cos(p.y * 2.0 + uTime) * 0.5) * (0.12 + uSpeed * 0.95);
 
   vec4 newPosition = modelViewMatrix * vec4(p, 1.0);
 
-  newPosition.z += sin(newPosition.x / uViewportSizes.x * uMobile / 2.0) * abs(uStrength);
+  newPosition.z += sin(newPosition.x / uViewportSizes.x * uMobile / 2.0) * abs(uStrength) * 1.35;
 
   gl_Position = projectionMatrix * newPosition;
 }

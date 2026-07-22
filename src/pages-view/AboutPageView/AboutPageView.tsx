@@ -8,7 +8,7 @@ import {
   Contacts,
 } from "./sections";
 import { useHeaderColorObserver } from "@/shared/lib/use-header-color";
-import { DEFAULT_HEADER_CLASS, DARK_HEADER_CLASS } from "@/shared/сonfig/const";
+import { DEFAULT_HEADER_CLASS } from "@/shared/сonfig/const";
 import DefaultLayout from "@/shared/ui/DefaultLayout";
 
 export type RawProps = {
@@ -36,7 +36,7 @@ const AboutPageView = ({
         <Hero
           ref={heroRef}
           {...heroSectionData}
-          data-header-class={DARK_HEADER_CLASS}
+          data-header-class={DEFAULT_HEADER_CLASS}
         />
 
         <Intro

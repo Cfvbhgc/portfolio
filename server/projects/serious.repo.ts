@@ -166,5 +166,6 @@ export const getSeriousProjects = async (
 ): Promise<IProjectFlat[]> =>
     SERIOUS_PROJECTS_BASE.map(({ ru, en, ...base }) => ({
         ...base,
+        detailHref: `/projects/${base.id}`,
         ...(locale === "en" ? en : ru),
     }));

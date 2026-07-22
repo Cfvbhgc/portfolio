@@ -186,8 +186,8 @@ export const useThreeProjectsOverlay = ({
             const next = cur + (target - cur) * 0.1;
             currentRef.current = next;
 
-            const strength = 0.0018 * (target - next);
-            const speed = Math.min(1, Math.abs(strength));
+            const strength = 0.0032 * (target - next);
+            const speed = Math.min(1.4, Math.abs(strength));
 
             const t = clock.getElapsedTime();
 

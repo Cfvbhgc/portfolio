@@ -8,6 +8,7 @@ export interface IProjectLocale {
 export interface IProject {
     id: string;
     href?: string;
+    detailHref?: string;
     github: string;
     previewImg: ImageShape;
     category: string;

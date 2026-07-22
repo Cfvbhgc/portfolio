@@ -1,0 +1,111 @@
+@use "@/application/css/utils/mixins" as *;
+@use "@/application/css/base/variables" as *;
+
+.project-detail {
+  --pt: 160px;
+  --pb: 120px;
+  min-height: 100vh;
+  padding-top: var(--pt);
+  padding-bottom: var(--pb);
+
+  @include tablet {
+    --pt: 130px;
+    --pb: 90px;
+  }
+
+  @include mobile {
+    --pt: 110px;
+  }
+}
+
+.project-detail__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-detail__back {
+  align-self: flex-start;
+  color: rgba($light-1, 0.6);
+  transition: color $app-medium-duration $app-default-easing;
+
+  @include hover {
+    color: $light-1;
+  }
+}
+
+.project-detail__head {
+  margin-top: 48px;
+
+  @include mobile {
+    margin-top: 32px;
+  }
+}
+
+.project-detail__category {
+  color: $blue;
+  margin-bottom: 20px;
+}
+
+.project-detail__title {
+  max-width: 20ch;
+}
+
+.project-detail__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 56px;
+  overflow: hidden;
+  border-radius: 2px;
+
+  @include mobile {
+    margin-top: 36px;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.project-detail__image {
+  object-fit: cover;
+  user-select: none;
+}
+
+.project-detail__body {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  margin-top: 64px;
+  max-width: 68ch;
+
+  @include mobile {
+    margin-top: 40px;
+    gap: 32px;
+  }
+}
+
+.project-detail__summary {
+  color: rgba($light-1, 0.78);
+}
+
+.project-detail__actions {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.project-detail__btn {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba($light-1, 0.8);
+  border-bottom: 1px solid rgba($light-1, 0.35);
+  padding-bottom: 5px;
+  transition:
+    color $app-medium-duration $app-default-easing,
+    border-color $app-medium-duration $app-default-easing;
+
+  @include hover {
+    color: $light-1;
+    border-color: $blue;
+  }
+}
