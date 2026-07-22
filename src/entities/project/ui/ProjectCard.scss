@@ -63,13 +63,6 @@
   opacity: 1;
 }
 
-.projects-slider--no-webgl {
-  .project-card__summary,
-  .project-card__actions {
-    opacity: 1;
-  }
-}
-
 .project-card__image {
   object-fit: cover;
   user-select: none;

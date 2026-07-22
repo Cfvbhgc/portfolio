@@ -183,63 +183,6 @@
   }
 }
 
-/* Static, scrollable fallback: mobile / coarse pointers / WebGL unavailable.
-   The horizontal scroll-jack is disabled here, so the slider must not trap
-   vertical page scroll (touch-action) and lays the cards out as a grid. */
-.projects-slider--no-webgl {
-  width: 100%;
-  height: auto;
-  margin-left: 0;
-  margin-right: 0;
-  padding-inline: var(--offset-x);
-  touch-action: auto;
-  overscroll-behavior: auto;
-  transform: none !important;
-  transition: none;
-
-  .projects-slider__viewport {
-    height: auto;
-    overflow: visible;
-  }
-
-  .projects-slider__webgl {
-    display: none;
-  }
-
-  .projects-slider__counter,
-  .projects-slider__scroll {
-    display: none;
-  }
-
-  .projects-slider__track {
-    position: static;
-    transform: none !important;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-    width: 100%;
-
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .project-card {
-    width: 100%;
-    padding-inline: 0;
-    padding-bottom: 0;
-  }
-
-  .projects-slider__all {
-    position: static;
-    transform: none;
-    margin-top: 28px;
-    opacity: 1;
-    pointer-events: auto;
-    display: inline-block;
-  }
-}
-
 @keyframes scroll-arrow-soft {
   0% {
     transform: translateX(-50%) translateY(-6px) rotate(180deg);

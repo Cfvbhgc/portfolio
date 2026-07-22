@@ -18,18 +18,6 @@ export interface IProject {
 
 export type IProjectFlat = Omit<IProject, 'ru' | 'en'> & IProjectLocale;
 
-export interface ISeriousProject {
-    id: string;
-    github: string;
-    demo?: string;
-    category: string;
-
-    ru: IProjectLocale;
-    en: IProjectLocale;
-}
-
-export type ISeriousProjectFlat = Omit<ISeriousProject, 'ru' | 'en'> & IProjectLocale;
-
 export interface IProjectDetail extends IProjectFlat {
     video?: VideoShape;
     images?: ImageShape[];
