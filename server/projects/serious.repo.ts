@@ -16,6 +16,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         ru: {
             name: "ИИ-бот знаний",
+            fullName: "ИИ-бот по базе знаний компании",
             summary: tp(
                 "Telegram-бот, который отвечает на вопросы строго по загруженным документам компании (прайсы, инструкции, договоры) и не выдумывает. Использует RAG: находит нужный фрагмент в документах и отвечает по нему, а не из общих знаний. Если ответа в базе нет — честно говорит об этом. Python, aiogram, векторный поиск, LLM.",
             ),
@@ -23,6 +24,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         en: {
             name: "Knowledge bot",
+            fullName: "Knowledge base RAG bot",
             summary:
                 "A Telegram bot that answers strictly from the company's uploaded documents (price lists, manuals, contracts) and never makes things up. It uses RAG: it finds the relevant passage in the documents and answers from it, not from general knowledge. If the answer isn't in the base, it says so honestly. Python, aiogram, vector search, LLM.",
         },
@@ -38,6 +40,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         ru: {
             name: "ИИ по заявкам",
+            fullName: "ИИ-ассистент по обработке заявок",
             summary: tp(
                 "Принимает заявки с сайта и из Telegram, сам расспрашивает клиента (услуга, бюджет, сроки, контакт), отвечает на типовые вопросы по прайсу и отдаёт менеджеру готовую квалифицированную заявку. Сложные случаи переводит на живого человека. Работает круглосуточно. Python, FastAPI, aiogram, LLM.",
             ),
@@ -45,6 +48,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         en: {
             name: "AI lead intake",
+            fullName: "AI lead intake assistant",
             summary:
                 "Takes requests from the website and Telegram, questions the client itself (service, budget, timeline, contact), answers typical price questions and hands the manager a ready, qualified lead. It routes hard cases to a human. Runs around the clock. Python, FastAPI, aiogram, LLM.",
         },
@@ -60,6 +64,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         ru: {
             name: "Парсер прайсов",
+            fullName: "ИИ-парсер прайс-листов поставщиков",
             summary: tp(
                 "Разбирает прайсы поставщиков в Excel с любой структурой — разные колонки, объединённые ячейки, мусорные шапки. Находит заголовок по смыслу, а не по номеру строки, определяет структуру через ИИ один раз на файл, категоризирует товары и выдаёт аккуратный Excel-отчёт. Python, openpyxl, LLM.",
             ),
@@ -67,6 +72,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         en: {
             name: "AI price parser",
+            fullName: "AI supplier price parser",
             summary:
                 "Parses supplier price lists in Excel with any structure — varying columns, merged cells, junk headers. It finds the header row by meaning rather than by line number, detects the structure with AI once per file, categorizes the items and outputs a clean Excel report. Python, openpyxl, LLM.",
         },
@@ -82,6 +88,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         ru: {
             name: "Прибыль МП",
+            fullName: "Дашборд реальной прибыли маркетплейсов",
             summary: tp(
                 "Сводит данные о продажах из API маркетплейса и считает реальную прибыль: выручка минус комиссии, логистика, себестоимость, возвраты. Показывает убыточные товары, которые в «выручке» выглядят нормально. Фоновая синхронизация, KPI, графики, cash-flow выплат. FastAPI, React, PostgreSQL.",
             ),
@@ -89,6 +96,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         en: {
             name: "Profit dashboard",
+            fullName: "Marketplace real-profit dashboard",
             summary:
                 "Pulls sales data from the marketplace API and computes real profit: revenue minus fees, logistics, cost of goods and returns. It surfaces loss-making items that look fine by «revenue». Background sync, KPIs, charts, payout cash-flow. FastAPI, React, PostgreSQL.",
         },
@@ -104,6 +112,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         ru: {
             name: "CRM с ролями",
+            fullName: "Аналитическая CRM с ролями и доступами",
             summary: tp(
                 "Аналитическая панель с разграничением доступа: директор видит всю финансовую картину, менеджер — только свои продажи. Права проверяются на сервере, а не прячутся в интерфейсе — менеджер не получит чужие данные даже через прямой запрос. JWT-авторизация, аудит действий. FastAPI, React, PostgreSQL.",
             ),
@@ -111,6 +120,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         en: {
             name: "CRM dashboard",
+            fullName: "Role-based analytics CRM",
             summary:
                 "An analytics panel with access control: the director sees the full financial picture, a manager sees only their own sales. Permissions are enforced on the server, not hidden in the UI — a manager can't get others' data even via a direct request. JWT auth, action audit log. FastAPI, React, PostgreSQL.",
         },
@@ -126,6 +136,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         ru: {
             name: "Генератор докум.",
+            fullName: "Генератор документов по шаблонам",
             summary: tp(
                 "Заполняет однотипные документы (договор, счёт, акт) по введённым данным одним нажатием. Форматирование шаблона сохраняется один в один, сумма прописью считается с правильными окончаниями, готовые файлы скачиваются пакетом. Python, FastAPI, docxtpl, React.",
             ),
@@ -133,6 +144,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         en: {
             name: "Doc generator",
+            fullName: "Template document generator",
             summary:
                 "Fills repetitive documents (contract, invoice, act) from entered data in one click. The template formatting is preserved exactly, the amount-in-words is spelled with correct grammatical endings, and finished files download in a batch. Python, FastAPI, docxtpl, React.",
         },
@@ -148,6 +160,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         ru: {
             name: "Обогащение баз",
+            fullName: "Обогащение баз компаний контактами",
             summary: tp(
                 "По списку компаний (название, ИНН) находит официальные сайты, проверяет принадлежность по ИНН, собирает email и выдаёт Excel-отчёт. Не тащит в базу почту агрегаторов — сайт считается сайтом компании только когда это доказано. Python, openpyxl.",
             ),
@@ -155,6 +168,7 @@ export const SERIOUS_PROJECTS_BASE = [
 
         en: {
             name: "Data enrichment",
+            fullName: "Company data enrichment",
             summary:
                 "From a list of companies (name, tax ID) it finds official websites, verifies ownership by tax ID, collects emails and outputs an Excel report. It won't pull aggregator emails into the base — a site counts as the company's own only once that's proven. Python, openpyxl.",
         },

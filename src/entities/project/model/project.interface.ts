@@ -2,6 +2,7 @@ import { ImageShape, VideoShape } from "@/shared/model/types";
 
 export interface IProjectLocale {
     name: string;
+    fullName?: string;
     summary: string;
 }
 

@@ -25,6 +25,8 @@ const ProjectDetailPageView = ({ project }: RawProps) => {
     return () => cancelAnimationFrame(id);
   }, []);
 
+  const title = project.fullName || project.name;
+
   return (
     <DefaultLayout>
       <div
@@ -32,14 +34,11 @@ const ProjectDetailPageView = ({ project }: RawProps) => {
         ref={rootRef}
         data-header-class={DEFAULT_HEADER_CLASS}>
         <section className="project-detail__hero">
-          <div
-            className={classNames("project-detail__hero-media", {
-              "project-detail__hero-media--mounted": mounted,
-            })}>
+          <div className="project-detail__hero-bg" aria-hidden="true">
             <Image
-              className="project-detail__hero-image"
+              className="project-detail__hero-bg-image"
               src={project.previewImg.src}
-              alt={project.name}
+              alt=""
               fill
               priority
               sizes="100vw"
@@ -53,13 +52,30 @@ const ProjectDetailPageView = ({ project }: RawProps) => {
               {isEn ? "← Home" : "← Главная"}
             </Link>
 
-            <div className="project-detail__hero-content">
-              {project.category && (
-                <p className="project-detail__category text-xs">
-                  {project.category}
-                </p>
-              )}
-              <h1 className="project-detail__title h1">{project.name}</h1>
+            <div className="project-detail__hero-grid">
+              <div className="project-detail__hero-text">
+                {project.category && (
+                  <p className="project-detail__category text-xs">
+                    {project.category}
+                  </p>
+                )}
+                <h1 className="project-detail__title h1">{title}</h1>
+              </div>
+
+              <figure
+                className={classNames("project-detail__figure", {
+                  "project-detail__figure--mounted": mounted,
+                })}>
+                <Image
+                  className="project-detail__figure-image"
+                  src={project.previewImg.src}
+                  alt={title}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 90vw, 40vw"
+                  draggable={false}
+                />
+              </figure>
             </div>
           </div>
         </section>
