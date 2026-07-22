@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
       breadcrumbs: [],
       h1: locale === "en" ? "DigitalPr0 Portfolio" : "Портфолио DigitalPr0",
       projectsSectionData: {
-        projects: [...projects, ...seriousProjects],
+        projects: [...seriousProjects, ...projects],
         scrollBtn: locale === "en" ? "Scroll Down" : "Скролл вниз",
         allProjects: {
           text: locale === "en" ? "View all projects" : "Смотреть все проекты",
