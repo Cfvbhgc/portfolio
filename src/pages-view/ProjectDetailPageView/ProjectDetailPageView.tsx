@@ -1,5 +1,6 @@
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import classNames from "classnames";
 import { IProjectFlat } from "@/entities/project";
 import { useHeaderColorObserver } from "@/shared/lib/use-header-color";
 import { DEFAULT_HEADER_CLASS } from "@/shared/сonfig/const";
@@ -15,8 +16,14 @@ export type RawProps = {
 const ProjectDetailPageView = ({ project }: RawProps) => {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const sectionRefs = useMemo(() => [rootRef], []);
+  const [mounted, setMounted] = useState(false);
 
   useHeaderColorObserver(sectionRefs, DEFAULT_HEADER_CLASS);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   return (
     <DefaultLayout>
@@ -24,32 +31,41 @@ const ProjectDetailPageView = ({ project }: RawProps) => {
         className="project-detail"
         ref={rootRef}
         data-header-class={DEFAULT_HEADER_CLASS}>
-        <div className="wrapper project-detail__wrapper">
-          <Link href="/" className="project-detail__back text-xs">
-            {isEn ? "← Home" : "← Главная"}
-          </Link>
-
-          <div className="project-detail__head">
-            {project.category && (
-              <p className="project-detail__category text-xs">
-                {project.category}
-              </p>
-            )}
-            <h1 className="project-detail__title h1">{project.name}</h1>
-          </div>
-
-          <div className="project-detail__media">
+        <section className="project-detail__hero">
+          <div
+            className={classNames("project-detail__hero-media", {
+              "project-detail__hero-media--mounted": mounted,
+            })}>
             <Image
-              className="project-detail__image"
+              className="project-detail__hero-image"
               src={project.previewImg.src}
               alt={project.name}
               fill
+              priority
               sizes="100vw"
               draggable={false}
             />
+            <div className="project-detail__scrim" />
           </div>
 
-          <div className="project-detail__body">
+          <div className="wrapper project-detail__hero-inner">
+            <Link href="/" className="project-detail__back text-xs">
+              {isEn ? "← Home" : "← Главная"}
+            </Link>
+
+            <div className="project-detail__hero-content">
+              {project.category && (
+                <p className="project-detail__category text-xs">
+                  {project.category}
+                </p>
+              )}
+              <h1 className="project-detail__title h1">{project.name}</h1>
+            </div>
+          </div>
+        </section>
+
+        <section className="project-detail__body">
+          <div className="wrapper project-detail__body-inner">
             {project.summary && (
               <p className="project-detail__summary text-l">
                 {project.summary}
@@ -75,7 +91,7 @@ const ProjectDetailPageView = ({ project }: RawProps) => {
               </a>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </DefaultLayout>
   );
