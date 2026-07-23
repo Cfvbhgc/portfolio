@@ -93,7 +93,9 @@
   background-color: rgba($black, 0.5);
 
   @include tablet() {
-    --bottom: 7svh;
+    --bottom: 4svh;
+    left: 20px;
+    transform: none;
   }
 }
 
@@ -175,7 +177,7 @@
 
   @include tablet {
     top: auto;
-    bottom: 16svh;
+    bottom: 8svh;
     right: 50%;
     transform: translateX(50%);
     opacity: 1;
