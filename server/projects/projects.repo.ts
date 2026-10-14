@@ -7,6 +7,52 @@ const GH = "https://github.com/Cfvbhgc/";
 
 export const PROJECTS_BASE = [
     {
+        id: "cleanova",
+        href: `${DEMO}cleanova/`,
+        github: `${GH}cleanova`,
+        previewImg: {
+            src: "/portfolio/static/previews/cleanova.jpg",
+        },
+        category: "Landing / Services",
+
+        ru: {
+            name: "Cleanova",
+            summary: tp(
+                "Лендинг клининговой компании: услуги с ценами, фото до и после, форма заявки.",
+            ),
+        },
+
+        en: {
+            name: "Cleanova",
+            summary:
+                "Cleaning company landing: services with prices, before-and-after photos, request form.",
+        },
+    },
+
+    {
+        id: "dentalis",
+        href: `${DEMO}dentalis/`,
+        github: `${GH}dentalis`,
+        previewImg: {
+            src: "/portfolio/static/previews/dentalis.jpg",
+        },
+        category: "Landing / Clinic",
+
+        ru: {
+            name: "Dentalis",
+            summary: tp(
+                "Лендинг премиальной стоматологии: услуги и цены, врачи, отзывы, запись на приём.",
+            ),
+        },
+
+        en: {
+            name: "Dentalis",
+            summary:
+                "Premium dental clinic landing: services and prices, doctors, reviews, appointment booking.",
+        },
+    },
+
+    {
         id: "semiglobe-brasil",
         href: `${DEMO}semiglobe-brasil/`,
         github: `${GH}semiglobe-brasil`,
